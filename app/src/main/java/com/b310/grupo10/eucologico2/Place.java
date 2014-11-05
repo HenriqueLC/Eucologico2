@@ -5,11 +5,10 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-//import com.google.android.maps.GeoPoint;
-//import com.google.android.maps.OverlayItem;
 
 public class Place {
 	private String descr;
@@ -17,6 +16,8 @@ public class Place {
 	private int rec[];
 	private LatLng gp;
 	private int id;
+    private Marker marker;
+    private BitmapDescriptor icon;
 	
 	public Place() {
 		descr = null;
@@ -64,8 +65,10 @@ public class Place {
 	}
 	
 	public void SetGeoPoint(LatLng gp) { this.gp = gp; }
-	
-	public String GetDescription() {
+
+    public void SetIcon(BitmapDescriptor icon){ this.icon = icon; }
+
+    public String GetDescription() {
 		return descr;
 	}
 	
@@ -80,8 +83,14 @@ public class Place {
 	public LatLng GetGeoPoint() {
 		return gp;
 	}
-	
-	public boolean IsBookmarked(Context c) {
+
+    public BitmapDescriptor GetIcon(){ return icon; }
+
+    public Marker GetMarker(){ return marker; }
+
+
+
+    public boolean IsBookmarked(Context c) {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(c);
 		
 		return sp.getBoolean("PLACE " + String.valueOf(id), false);
@@ -104,7 +113,7 @@ public class Place {
 	}
 
     public void Populate(GoogleMap map){
-        map.addMarker(new MarkerOptions().position(gp).title(index).snippet(descr));
+        marker = map.addMarker(new MarkerOptions().position(gp).title(index).snippet(descr).icon(icon));
 
     }
 }

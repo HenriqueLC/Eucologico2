@@ -37,6 +37,10 @@ public class ItemizedLocation<T extends Place> {
 		//setLastFocusedIndex(-1);
 	}
 
+    public T getItem(int id){
+        return places.get(id);
+    }
+
 	protected T createItem(int i) {
 		// TODO Auto-generated method stub
 		 return places.get(i);

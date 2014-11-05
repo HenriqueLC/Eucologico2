@@ -21,6 +21,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.InfoWindowAdapter;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
@@ -61,6 +62,8 @@ public class MapsActivity extends FragmentActivity  implements LocationListener{
     LocationManager lm;
     Location location;
     String bestProvider;
+
+    Place item = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +114,8 @@ public class MapsActivity extends FragmentActivity  implements LocationListener{
      * This should only be called once and when we are sure that {@link #mMap} is not null.
      */
     private void setUpMap() {
+
+
         mMap.setInfoWindowAdapter(new InfoWindowAdapter() {
 
             @Override
@@ -132,8 +137,8 @@ public class MapsActivity extends FragmentActivity  implements LocationListener{
 
                 return v;
             }
-        });
 
+        });
         //mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
         // set gps stuff with bestprovider available
         lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -169,38 +174,23 @@ public class MapsActivity extends FragmentActivity  implements LocationListener{
 
             // using OverlayItem class reduces a lot
             // the maps lag.
-            Drawable eee = getResources().getDrawable(R.drawable.pin);
-            eee.setBounds(0, 0, eee.getIntrinsicWidth(), eee.getIntrinsicHeight());
-            Drawable eeefav = getResources().getDrawable(R.drawable.pinfav);
-            eeefav.setBounds(0, 0, eeefav.getIntrinsicWidth(), eeefav.getIntrinsicHeight());
+
+            //eee.setBounds(0, 0, eee.getIntrinsicWidth(), eee.getIntrinsicHeight());
+            //Drawable eeefav = getResources().getDrawable(R.drawable.pinfav);
+            //eeefav.setBounds(0, 0, eeefav.getIntrinsicWidth(), eeefav.getIntrinsicHeight());
             places = new BulletGroup(mMap);
             map_places = kml.getData();
             for (Place gp : map_places) {
                 //PlaceOverlayItem ooooi = new PlaceOverlayItem(gp);
-                //if (gp.IsBookmarked(map.getContext()))
-                //	ooooi.setMarker(eeefav);
+                if (gp.IsBookmarked(getApplicationContext())) gp.SetIcon(BitmapDescriptorFactory.fromResource(R.drawable.pinfav));
+                else gp.SetIcon(BitmapDescriptorFactory.fromResource(R.drawable.pin));
                 places.AddOverlay(gp);
 
             }
 
-            // currently location found by the GPS service
-            Location loc = GetCurrentGPSLocation();
-            user_e = getResources().getDrawable(R.drawable.pt);
-            user_e.setBounds(0, 0, user_e.getIntrinsicWidth(), user_e.getIntrinsicHeight());
-            gps_pos = new ItemizedLocation<Place>(mMap);
-            if (loc != null) {
-                user = new Place(new LatLng(
-                        (int) (loc.getLatitude()),
-                        (int) (loc.getLongitude())), "", "");
-
-                //user.setMarker(user_e);
-                gps_pos.AddOverlay(user);
-            }
-
             //aplica filtro
             Update();
-            gps_pos.PopulateNow();
-            places.PopulateNow();
+            //places.PopulateNow();
             //map.getOverlays().add(gps_pos);
         } catch (Exception e) {
             e.printStackTrace();
@@ -226,8 +216,6 @@ public class MapsActivity extends FragmentActivity  implements LocationListener{
     public void Update() {
         SharedPreferences spp = PreferenceManager.getDefaultSharedPreferences(this);
 
-        Drawable eee = getResources().getDrawable(R.drawable.pin);
-        eee.setBounds(0, 0, eee.getIntrinsicWidth(), eee.getIntrinsicHeight());
         BulletGroup bg = new BulletGroup(mMap);
         for (Place poi : places.AplicarFiltro(spp.getInt("FILTRO", 0))) {
             bg.AddOverlay(poi);
@@ -235,6 +223,20 @@ public class MapsActivity extends FragmentActivity  implements LocationListener{
         mMap.clear();
         //bg.clear();
         bg.PopulateNow();
+
+        // currently location found by the GPS service
+        Location loc = GetCurrentGPSLocation();
+        gps_pos = new ItemizedLocation<Place>(mMap);
+        if (loc != null) {
+            user = new Place(new LatLng(
+                    (loc.getLatitude()),
+                    (loc.getLongitude())), "Your Location", "");
+
+            //user.setMarker(user_e);
+            user.SetIcon(BitmapDescriptorFactory.fromResource(R.drawable.pt));
+            gps_pos.AddOverlay(user);
+        }
+        gps_pos.PopulateNow();
         //map.getOverlays().add(bg);
     }
 
@@ -255,8 +257,12 @@ public class MapsActivity extends FragmentActivity  implements LocationListener{
                 break;
 
             case R.id.map_defp:
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(DEF_LAT, DEF_LON)));
-                mMap.animateCamera(CameraUpdateFactory.zoomTo(DEF_ZOOM), 2000, null);
+                Location loc = GetCurrentGPSLocation();
+                gps_pos = new ItemizedLocation<Place>(mMap);
+                if (loc != null) {
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(loc.getLatitude(), loc.getLongitude())));
+                    mMap.animateCamera(CameraUpdateFactory.zoomTo(DEF_ZOOM), 2000, null);
+                }
                 break;
         }
 
