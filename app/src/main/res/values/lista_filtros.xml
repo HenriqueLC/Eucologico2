@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lista_filtros">
+        <item>Nenhum</item>
+        <item>Descarte de recicláveis</item>
+        <item>Doação de roupas</item>
+        <item>Descarte de eletrônicos</item>
+        <item>Descarte de cartuchos/tonners</item>
+        <item>Descarte de baterias</item>
+        <item>Doação de material escolar</item>
+        <item>Descarte de produtos químicos</item>
+        <item>Descarte de lixo hospitalar/infectante</item>
+        <item>Descarte de lâmpadas</item>
+        <item>Descarte de lixo tóxico</item>
+        <item>Descarte de resíduos biológicos</item>
+        <item>Descarte de resíduos radioativos</item>
+        <item>Descarte de resíduos de construção civil</item>
+    </string-array>
+</resources>

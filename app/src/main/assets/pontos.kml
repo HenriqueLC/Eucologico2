@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+	<local>
+		<nome>Colegio Rio Branco</nome>
+		<tipo>4,5</tipo>
+		<coord>-22.827404,-47.074174</coord>
+		<id>0</id>
+	</local>
+	<local>
+		<nome>Supermercado Pao de Acucar - Barao Geraldo</nome>
+		<tipo>0,4,1,2,5</tipo>
+		<coord>-22.826479,-47.079332</coord>
+		<id>1</id>
+	</local>
+	<local>
+		<nome>Agencia Santander - Unicamp</nome>
+		<tipo>0,4</tipo>
+		<coord>-22.817624,-47.069882</coord>
+		<id>2</id>
+	</local>
+	<local>
+		<nome>CECOM</nome>
+		<tipo>4</tipo>
+		<coord>-22.827572,-47.064829</coord>
+		<id>3</id>
+	</local>
+	<local>
+		<nome>FEEC - Faculdade de Engenharia Eletrica e Computacao</nome>
+		<tipo>0,1,2,4,8</tipo>
+		<coord>-22.820323,-47.065333</coord>
+		<id>4</id>
+	</local>
+	<local>
+		<nome>Agencia Santander - Santa Isabel</nome>
+		<tipo>4</tipo>
+		<coord>-22.827577,-47.079670</coord>
+		<id>5</id>
+	</local>
+	<local>
+		<nome>Agencia Santander - Reitoria</nome>
+		<tipo>4</tipo>
+		<coord>-22.827577,-47.079670</coord>
+		<id>6</id>
+	</local>
+	<local>
+		<nome>Supermercado Dalben</nome>
+		<tipo>0,4</tipo>
+		<coord>-22.833638,-47.079281</coord>
+		<id>7</id>
+	</local>
+	<local>
+		<nome>FEM - Faculdade de Engenharia Mecanica</nome>
+		<tipo>0,1,2,3,4,5,8</tipo>
+		<coord>-22.819048,-47.065473</coord>
+		<id>8</id>
+	</local>
+	<local>
+		<nome>FEAgri - Faculdade de Engenharia Agricola</nome>
+		<tipo>0,4</tipo>
+		<coord>-22.819196,-47.060398</coord>
+		<id>9</id>
+	</local>
+	<local>
+		<nome>Pavilhao Basico</nome>
+		<tipo>0,1</tipo>
+		<coord>-22.816635,-47.07088</coord>
+		<id>10</id>
+	</local>
+	<local>
+		<nome>Ciclo Basico</nome>
+		<tipo>0,1</tipo>
+		<coord>-22.817367,-47.068895</coord>
+		<id>11</id>
+	</local>
+	<local>
+		<nome>Parque Ecologico de Barao Geraldo</nome>
+		<tipo>4</tipo>
+		<coord>-22.804411,-47.069281</coord>
+		<id>12</id>
+	</local>
+	<local>
+		<nome>Shopping Dom Pedro</nome>
+		<tipo>4</tipo>
+		<coord>-22.845746,-47.061245</coord>
+		<id>13</id>
+	</local>
+	<local>
+		<nome>Instituto Eldorado</nome>
+		<tipo>0</tipo>
+		<coord>-22.812778,-47.061503</coord>
+		<id>14</id>
+	</local>
+	<local>
+		<nome>Diretoria Geral de Administracao</nome>
+		<tipo>6,10,11,12</tipo>
+		<coord>-22.824526,-47.065676</coord>
+		<id>15</id>
+	</local>
+</root>

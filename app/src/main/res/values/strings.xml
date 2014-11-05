@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Eucológico 2.0</string>
+    <string name="title_activity_maps">Eucológico 2.0</string>
+    <string name="mc_menu_fil">Filtros</string>
+    <string name="mc_menu_about">Sobre</string>
+    <string name="mc_menu_def">Ir para Local Atual</string>
+    <string name="about_txt">O Eucológico é um aplicativo Android
+        desenvolvido para a disciplina de BE310 da Unicamp. Seu
+        principal objetivo é prover uma maneira portátil de ter
+        acesso à locais de descarte de lixo reciclável e/ou inservíveis,
+        bem como doação de roupas, materiais escolares e tipos relacionados.</string>
+    <string name="about_author1">Cícero Silva Luiz Junior - 090761</string> 
+    <string name="about_author2">Davi Kooji Uezono - 097464</string>
+     <string name="about_author3">Diego Pereira Domingos - 090923</string>
+    <string name="about_author4">Erick Luis Moraes de Sousa - 095696</string>
+
+</resources>

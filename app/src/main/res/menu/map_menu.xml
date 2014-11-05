@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/map_fil"
+        android:title="@string/mc_menu_fil"/>
+   
+    <item
+        android:id="@+id/map_about"
+        android:title="@string/mc_menu_about"/>
+    <item
+        android:id="@+id/map_defp"
+        android:title="@string/mc_menu_def"/>
+
+</menu>
